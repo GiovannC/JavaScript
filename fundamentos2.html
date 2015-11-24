@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Fundamentos de programación JavaScript parte 2</title>
+</head>
+	<style>
+	body, html
+	{
+		font-family: Helvetica, sans-serif;
+		font-size: 16px;
+	}
+	</style>
+	<!-- 
+		Algoritmo: Es una serie de pasos a seguir para realizar una tarea, estos pasos son ordenados y finitos. Es como una receta.
+		
+		Diagrama de Flujo: Es la representación gráfica del algoritmo.
+	 -->
+<body>
+	<h1>Fundamentos de programación JavaScript parte 2</h1>
+	<p>
+		<a href="index.html">Regresar al inicio</a>
+	</p>
+
+	<hr>
+
+	<h2>Algoritmos y Diagramas de Flujo</h2>
+	<img src="activos/simbolos-diagramas-flujo.png" height="490" width="405" alt="Símbolos de los diagramas de flujo">
+
+	<hr>
+
+	<!-- 
+		Evento: es la accion que se ejecuta, ejemplo: click al boton.
+
+		Manejador del evento: Es la forma en como se manipula.
+
+		DOM: Document Object Model
+		http://librosweb.es/libro/ajax/capitulo_4.html
+
+		Estructuras de control: Condicionan el flujo de la programación.
+			1. Estructuras Secuenciales ( Se ejecutan una línea de código detras de la otra).
+			2. EStructuras Condcionales o de Decisión:
+					operador ternario
+					if - else
+					if - esle -if
+					switch - case
+			3. Estructuras Repetitivas o iclos
+					for
+					while
+
+	 -->
+	<h3>DOM</h3>
+	<!-- DOM -->
+	<a href="http://librosweb.es/libro/ajax/capitulo_4.html" target="_blank">librosweb - ajax/capitulo_4 DOM</a>
+	
+	<hr>
+
+	<h2>Eventos JS</h2>
+	<!-- Eventos -->
+	<a href="http://librosweb.es/libro/ajax/capitulo_6.html" target="_blank">librosweb - ajax/capitulo_6 EVENTOS</a>
+	<br>
+	<br>
+	<br>
+
+	<!-- Esta forma no es recomendada, ya que es lo mismo como si colocaramos los style css en la misma etiqueta -->
+	<!-- Al utilizarlo asi el evento no puede pasar el parametro -->
+	<button onclick="eventoClick();">Manejador de eventos como atributo HTML</button>
+
+	<!-- Los manejadores de Eventos Semánticos y Múltiples se deben inicializar con el evento window.onload y ejecutar a la carga del documento -->
+	<!-- Al utilizarlo asi el evento pasa parametro -->
+
+	<button id="boton">Manejador de eventos Semántico</button>
+
+	<button id="boton2">Manejador de eventos Múltiple</button>
+
+	<br>
+	<br>
+	<br>
+
+	<hr>
+	<!-- 
+		Determinar si un numero es Par o Impar
+	 -->
+	<h2>¿Cómo determinar si un número es par o impar?</h2>
+	<!-- 
+		Algoritmo:
+			1. Saber cuál es el número a determinar si es par o impar.
+			2. Dividir el número entre 2.
+			3. Evaluar el residuo:
+				4. Si el residuo es 0, el número es par.
+				5. Si el residuo es 1, el número es impar.
+
+		*** la Division (/) devuelve el cociente, el modulo (%) devuelve el residuo *****
+	 -->
+	<button id="numero">Dame un número</button>
+
+	<br>
+	<br>
+	
+	<img src="activos/diagrama-par-impar.jpg" alt="" width="500">
+
+
+
+	<script src="js/fundamentos2.js"></script>
+
+
+</body>
+</html>

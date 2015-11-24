@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Fundamentos de programación JavaScript parte 1</title>
+	<meta name="description" content="En esta serie de ejercicios aprenderemos programación en JavaScript">
+	<style>
+	body, html
+	{
+		font-family: Helvetica, sans-serif;
+		font-size: 16px;
+	}
+	</style>
+</head>
+<body>
+	<h1>Fundamentos de programación JavaScript parte 1</h1>
+	<p>
+		<a href="index.html">Regresar al inicio</a>
+	</p>
+
+	<hr>
+
+	<h2>Definiendo a un perro</h2>
+
+	<script>
+
+	// es lo mismo que: function Perro(){}
+		/*
+		Class Perro()
+		{
+			...
+		}
+		*/
+		// Clase Perro: function Perro  ---  Parametro: (n,r,e,s,a,f,c)
+		function Perro(n,r,e,s,a,f)
+		{	
+			// this: dentro de una función es el objeto que se define en la función, es decir o = Perro 
+			var o = this; 
+			// Atributos: definición de los atributos (caracteristicas)
+			o.nombre = n;
+			o.raza = r;
+			o.edad = e,
+			//o.sexo = s;
+			o.adiestrado = a;
+			o.foto = f;
+			//o.comida = c;
+
+			//Asignación ( 1 igual = )
+			// Comparación ( 2 iguales == compara que los valores sean iguales)
+			//	o.sexo = (s==true)?"Macho":"Hembra";
+			//Idéntico ( 3 iguales === compara que el valor y datos sean idénticos)
+			//	o.sexo = (s===true)?"Macho":"Hembra";
+
+				// *****************************
+
+			//Operador Ternario: o.sexo = (s==true)?"Macho":"Hembra";
+			//Variable = (condición)?verdadero:falso, si no se cumple ejecuta lo que esta despues de los :  si se cumple ejecuta lo que esta despues de ?
+			// A diferencia de un if else el operador ternario solo permite ejecutar una instrucción
+
+		//	o.sexo = (s==true)?"Macho":"Hembra";
+
+
+			// cuando el valor es Booleano se pude simprificar así:
+				
+			o.sexo = (s)?"Macho":"Hembra";
+
+			// Para saber el tipo de naturaleza de los datos (Objeto, Atributo, Parametro)se utiliza: typeof mas el parametro, esto nos mostrara si son boolean, string o numeros.
+			console.log(typeof s, typeof n, typeof e);
+
+			// la ! es para negación: o.sexo = (!s)?"Macho":"Hembra";
+			// !s  estoy esperando que s sea falsa, pregunta si sexo es diferente de true
+
+
+			// Metodo: lo que puede hacer, es una serie de procesos
+			o.aparecer = function()
+			{
+				//alert("El objeto aparece");
+
+				// **** Crear un elemento dinamicamente ***** 
+				// -- El metodo createElement del objeto document me permite crear un elemento HTML es decir una etiqueta HTML con sus atributos HTML como src, alt, title, etc... 
+
+				// -- al quitar la palabra reservada var la variable se vuelve global 
+				// var imagen = document.createElement("img");
+				imagen = document.createElement("img");
+				imagen.src = o.foto;
+				imagen.alt = o.nombre;
+				imagen.title = o.nombre;
+
+				// document tiene un objeto para poder acceder al body y uno para acceder al head
+				document.body.appendChild(imagen);
+			}
+
+			o.ladrar = function()
+			{
+				alert("Guauu!!! Guauu!!!");
+				var audio = document.createElement("audio");
+				audio.src = "activos/guau.mp3";
+				//audio.controls = true;
+				document.body.appendChild(audio);
+				return audio.play();
+			}
+
+			// El metodo comer recibe un parametro: c
+			o.comer = function(c)
+			{
+				// cuando se ejecute el metodo comer el objeto va a crear el atributo comida y comida va a ser igual a lo que se esta pasando como parametro: c
+
+				//o.comida = c;
+				//var alerta = alert(o.nombre + " come " + o.comida);
+				//return alerta;
+
+				alert(o.nombre + " come" + " croquetas" );
+
+				imgComida = c	
+				imgComida = document.createElement("img");
+				imgComida.src = "activos/croquetas.jpg";
+				imgComida.alt = ("croquetas");
+				imgComida.title = ("croquetas");
+				//imgComida.width = 250;
+				document.body.appendChild(imgComida);
+			}
+
+			o.mover = function()
+			{
+				// Añadiendo estuilos CSS
+				// El estilo CSS se invoca como un atributo del objeto
+
+				//alert("El objeto se ha movido");
+				imagen.style.position = "relative";
+				imagen.style.left = "5em";
+				imagen.style.display = "block";
+				// border-radius: en js para estilos que utilizan el - se quita el - y se utiliza camelCase
+				imagen.style.borderRadius = "50%";
+
+				imgComida.style.position = "relative";
+				imgComida.style.left = "5em";
+				imgComida.style.width = "250px";
+
+			}
+		}
+
+
+
+		// Se ejecuta cuando el documento carge
+		function iniciar()
+		{
+			// alert('Ejecutando función iniciar');
+		// ************	
+			// Objeto: dentro de los parentesis se especifican los atributos
+			//var kenai = new Perro("kenai", "Bulldog", 2, true, true, "activos/kenai.jpg", "croquetas" );
+			var kenai = new Perro("kenai", "Bulldog", 2, true, true, "activos/kenai.jpg");
+
+			// 	Los objetos no se pueden imprimir en alert o document.write porque tiene mas cosas adentro a no ser que se especifique el atributo. ej: document.write("<p>"+kenai.nombre+"</p>"  -- El objeto se puede imprimir o ver su definición en la consola: console.log );
+
+			//alert(kenai);
+			//document.write(kenai);
+		//	document.write(kenai + "<br />" + window + "<br />" + document + "<br />" + navigator);
+			//console.log(kenai,window,navigator,document)
+			console.log(kenai)
+
+			document.write("<p>"+kenai.nombre+"</p>");
+			document.write("<p>"+kenai.raza+"</p>");
+			document.write("<p>"+kenai.edad+" años"+"</p>");
+			document.write("<p>"+kenai.sexo+"</p>");
+			document.write("<p>"+kenai.adiestrado+"</p>");
+			//document.write("<p>"+kenai.foto+"</p>");
+			//document.write("<p>"+kenai.comida+"</p>");
+
+			kenai.aparecer();
+			kenai.ladrar();
+			//kenai.comer("tacos");
+			//kenai.comer("Croquetas");
+			kenai.comer();
+			kenai.mover();
+		}
+
+		// Se ejecuta la funcion que previamente ya esta definida
+		iniciar();
+
+	</script>
+</body>
+</html>
