@@ -1,13 +1,23 @@
 /*    ----------------------------------------------    */
 		// -- 1. DECLARACIÓN DE OBJETOS Y VARIABLES
 /*    ----------------------------------------------    */
+
 var boton = document.getElementById("boton");
 var boton2 = document.getElementById("boton2");
+
 var numero = document.getElementById("numero");
+
+var hola = document.getElementById("hola");
+
+var fecha = new Date();
+var hora = fecha.getHours();
+
 
 /*    ----------------------------------------------    */
 		// -- 2. DECLARACIÓN DE FUNCIONES
 /*    ----------------------------------------------    */
+
+
 function eventoClick()
 {
 	alert("Has presionado el botón como atributo HTML");
@@ -38,6 +48,7 @@ function otroEventoClick(evento)
 
 
 }
+
 function parImpar()
 {
 	// esta variable solo existe en este funcion
@@ -58,9 +69,60 @@ function parImpar()
 	}
 }
 
+function saluda()
+{
+	//alert(fecha);
+	//alert(hora);
+
+
+	/*
+	Algoritmo para saludar:
+		1. El Día tiene 24 horas que van de la 0 a la 23
+		2. Decimos Deja dormir de las 0 a las 5
+		3. Decimos Buenos días de las 6 a las 11
+		4. Decimos Buenas tardes de las 12 a las 18
+		5. Decimos Bunas noches de las 19 a la 23
+	*/
+
+	/* Enlazar una hoja de estilos CSS */
+	var hojaCSS = document.createElement("link");
+	hojaCSS.rel = "stylesheet";
+
+	// if ( hora <= 5)
+	if ( hora < 6 ) 
+	{
+		alert("Deja dormir");
+		hojaCSS.href = "activos/duermete.css";
+	}
+	//else if ( hora > 5 && hora < 12) -- si aca se coloca > 6 no entra porque seis no es mayor que 6, entraria apartir de 7
+	// con < o > se Excluye el numero con el que se esta evaluando
+	// con <= 0 >= se Incluye el numero con el que se esta evaluando
+	else if ( hora >= 6 && hora <= 11 )
+	{
+		alert("Buenos días");
+		hojaCSS.href = "activos/dia.css";
+	}
+	//else if ( hora > 11 && hora < 19)
+	else if ( hora >= 12 && hora <= 18) 
+	{
+		alert("Buenas tardes");
+		hojaCSS.href = "activos/tarde.css";
+	}
+	else
+	{
+		alert("Buenas noches");
+		hojaCSS.href = "activos/noche.css";
+	}
+
+	document.head.appendChild(hojaCSS);
+}
+
+
 /*    ----------------------------------------------    */
 		// 3. ASIGNACIÓN DE EVENTOS
 /*    ----------------------------------------------    */
+
+
 
 	// -- Funcion Definida: ya esta definida en el documento y se puede invocar varias veces donde se necesite.
 	// -- Función Anónima: se ejecuta en el momento que se esta definiendo, porque se esta asignando a la cargar del objeto en ese momento.
@@ -79,6 +141,9 @@ window.onload = function(){
 	boton2.addEventListener("click", eventoClick1);
 
 	numero.addEventListener("click", parImpar);
+
+	hola.onclick = saluda;
+
 }
 
 

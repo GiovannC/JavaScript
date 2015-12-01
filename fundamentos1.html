@@ -77,7 +77,7 @@
 				//alert("El objeto aparece");
 
 				// **** Crear un elemento dinamicamente ***** 
-				// -- El metodo createElement del objeto document me permite crear un elemento HTML es decir una etiqueta HTML con sus atributos HTML como src, alt, title, etc... 
+				// -- El metodo createElement del objeto document permite crear un elemento HTML es decir una etiqueta HTML con sus atributos HTML como src, alt, title, link, etc... 
 
 				// -- al quitar la palabra reservada var la variable se vuelve global 
 				// var imagen = document.createElement("img");
@@ -86,8 +86,10 @@
 				imagen.alt = o.nombre;
 				imagen.title = o.nombre;
 
+				// Así se llama
 				// document tiene un objeto para poder acceder al body y uno para acceder al head
 				document.body.appendChild(imagen);
+				//document.head.appendChild();
 			}
 
 			o.ladrar = function()
