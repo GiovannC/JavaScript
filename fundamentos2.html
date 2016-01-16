@@ -5,11 +5,11 @@
 	<title>Fundamentos de programación JavaScript parte 2</title>
 </head>
 	<style>
-	body, html
-	{
-		font-family: Helvetica, sans-serif;
-		font-size: 16px;
-	}
+		body, html
+		{
+			font-family: Helvetica, sans-serif;
+			font-size: 16px;
+		}
 	</style>
 	
 	<!-- 
@@ -104,10 +104,41 @@
 	
 	<img src="activos/diagrama-par-impar.jpg" alt="" width="500">
 
+	<hr>
 
 	<h2>Juguemos con la fecha</h2>
 
 	<button id="hola">Hola</button>
+	<button id="bisiesto">Año bisiesto</button>
+	<!-- 
+		Algoritmo:
+			1. El año bisiesto debe ser divisible entre 4, ejemplo: 2004, 2008.
+			2. Pero si el año es divisible entre 4 y 100, entonces no es bisiesto, ejemplo: 2100, 2200.
+			3. Pero si el año es divisible entre 100 y 400, entonces si es bisiesto, ejemplo: 2000, 2400
+			
+			¿Por qué?
+				http://www.disfrutalasmatematicas.com/medida/anos-bisiestos.html
+	 -->
+
+
+	<hr>
+
+	<h2>Temporizadores</h2>
+
+	<button id="reloj">Reloj</button>
+	<button id="detener-reloj">Detener Reloj</button>
+	<button id="alarma">Alarma</button>
+	<button id="detener-alarma">Detener Alarma</button>
+
+	<div id="muestro-hora"></div>
+
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 
 
 	<script src="js/fundamentos2.js"></script>

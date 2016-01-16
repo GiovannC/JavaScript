@@ -11,11 +11,36 @@ var hola = document.getElementById("hola");
 
 var fecha = new Date();
 var hora = fecha.getHours();
+var dia = fecha.getDay(); // devuelve el dia de la semana en numeros
+var minuto = fecha.getMinutes();
+var segundos = fecha.getSeconds();
+
+
+//- getFullYear:
+var date = new Date();
+var ejemplo = date.getFullYear();
+
+
+// bisiesto
+var bisiesto =  document.getElementById("bisiesto");
+
+
+// Temporizador
+var btnReloj = document.getElementById("reloj");
+var detenerReloj = document.getElementById("detener-reloj");
+var muestroHora = document.getElementById("muestro-hora");
+
+var btnAlarma = document.getElementById("alarma");
+var detenerAlarma = document.getElementById("detener-alarma");
+
+
+
 
 
 /*    ----------------------------------------------    */
 		// -- 2. DECLARACIÓN DE FUNCIONES
 /*    ----------------------------------------------    */
+
 
 
 function eventoClick()
@@ -51,7 +76,7 @@ function otroEventoClick(evento)
 
 function parImpar()
 {
-	// esta variable solo existe en este funcion
+	// esta variable solo existe en este funcion 		
 	var numero = prompt("Ingresa un número");
 
 	// isNaN: No es un numero - is not a number, true si el valor es alfanúmerico, false si es númerico.
@@ -115,12 +140,114 @@ function saluda()
 	}
 
 	document.head.appendChild(hojaCSS);
+
+	alert(dia);
+	/* 
+		D L M M J V S
+		0 1 2 3 4 5 6
+	*/
+	// Ya no se recomienda utilizar switch
+	switch(dia)
+	{
+		case 0:
+			alert("Es domingo");
+			break;
+
+		case 1:
+			alert("Es lunes");
+			break;
+
+		case 2:
+			alert("Es martes");
+			break;
+
+		case 3:
+			alert("Es miercoles");
+			break;
+
+		default:
+			alert("Son otros dias");
+			break;
+	}
+
+	alert(ejemplo);
 }
+
+function anioBisiesto()
+{
+	var anio = prompt("Ingresa un año");
+
+	if (isNaN(anio)) 
+	{
+		alert("No me engañes, eso no es un año");
+	} 
+	else
+	{
+		if ((anio%4 == 0 && anio%100 != 0) || anio%400 == 0) 
+		{
+			alert("El año " + anio + " Es bisiesto");
+		}
+		else
+		{
+			alert("El año " + anio + " No es bisiesto");
+		}
+	}
+}
+
+function reloj()
+{	
+	var fechaReloj = new Date();
+	var horaReloj = fechaReloj.getHours(); // El formato de hora es 24 h
+	var minReloj = fechaReloj.getMinutes();
+	var segReloj = fechaReloj.getSeconds();
+	var formatoAmPm;
+	//horaReloj = 15;
+
+	//formatoAmPm = (horaReloj>=13)?" pm":" am";
+
+	// Mostar formato 12 h
+	if (horaReloj>=13) 
+	{	
+		horaReloj = horaReloj - 12;
+		formatoAmPm = " am";	
+	}
+	else
+	{
+	 	formatoAmPm = " pm";
+	}
+
+	// Anteponer un cero en los numeros del 1 al 9
+	if (horaReloj <= 9) 
+	{
+		horaReloj = "0" + horaReloj;
+	}
+
+	if (minReloj <= 9) 
+	{
+		minReloj = "0" + minReloj;
+	}
+
+	if (segReloj <= 9) 
+	{
+		segReloj = "0" + segReloj;
+	}
+
+	muestroHora.innerHTML = "<h3>"+horaReloj+":"+minReloj+":"+segReloj+ formatoAmPm+"</h3>";
+}
+
+function alarma()
+{
+	var audio = document.createElement("audio");
+	audio.src = "activos/alarma.mp3"
+	return audio.play();
+}
+
 
 
 /*    ----------------------------------------------    */
 		// 3. ASIGNACIÓN DE EVENTOS
 /*    ----------------------------------------------    */
+
 
 
 
@@ -142,7 +269,30 @@ window.onload = function(){
 
 	numero.addEventListener("click", parImpar);
 
-	hola.onclick = saluda;
+	//hola.onclick = saluda;
+	hola.addEventListener("click", saluda);
+
+	//bisiesto
+	bisiesto.addEventListener("click", anioBisiesto);
+
+
+	// Temporizador
+	btnReloj.addEventListener("click", function(){
+		//setInterval(reloj, 1000) // tiempo en milisegundos
+		iniciarReloj = setInterval(reloj, 1000) // serInterval se ejecuta n cantidad de veces ---- tiempo en milisegundos
+	});
+
+	detenerReloj.addEventListener("click", function(){
+		clearInterval(iniciarReloj); // Detener el reloj
+	});
+
+	btnAlarma.addEventListener("click", function(){
+		iniciarAlarma = setTimeout(alarma, 2000); //setTimeout solo se ejecuta una vez
+	});
+
+	detenerAlarma.addEventListener("click", function(){
+		clearTimeout(iniciarAlarma); // se debe ejecutar antes de que inicie el setTimeout
+	});
 
 }
 
